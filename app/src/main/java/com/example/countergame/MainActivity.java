@@ -1,14 +1,26 @@
 package com.example.countergame;
 
+import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.ContentView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +32,29 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button punteggi = findViewById(R.id.punteggio);
+
+        punteggi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SecondaryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    public void onDataInput(String nome)
+    {
+        try
+        {
+            if(!nome.isEmpty())
+            {
+                //
+            }
+        } catch (NumberFormatException e) {
+            // Gestione errore se il telefono non è un numero
+        }
     }
 }
