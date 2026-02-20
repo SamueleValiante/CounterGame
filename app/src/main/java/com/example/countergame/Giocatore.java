@@ -1,6 +1,8 @@
 package com.example.countergame;
 
-public class Giocatore
+import java.io.Serializable;
+
+public class Giocatore implements Serializable
 {
     private String nome;
     private int punti;

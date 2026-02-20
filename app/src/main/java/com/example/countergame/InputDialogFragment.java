@@ -13,6 +13,10 @@ import androidx.fragment.app.DialogFragment;
 
 public class InputDialogFragment extends DialogFragment {
 
+    public interface OnInputListener {
+        void sendInput(String input);
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -26,7 +30,8 @@ public class InputDialogFragment extends DialogFragment {
 
         builder.setView(view)
                 .setTitle("Nuovo Contatto")
-                .setPositiveButton("Salva", (dialog, id) -> {
+                .setPositiveButton("Salva", (dialog, id) ->
+                {
                     String testoInserito = inputField.getText().toString();
                     ((MainActivity) getActivity()).onDataInput(testoInserito);
                 })

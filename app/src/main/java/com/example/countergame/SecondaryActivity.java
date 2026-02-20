@@ -2,13 +2,19 @@ package com.example.countergame;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecondaryActivity extends AppCompatActivity
 {
@@ -22,6 +28,16 @@ public class SecondaryActivity extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        ListView listview = findViewById(R.id.listview);
+
+        ArrayList<Giocatore> giocatori = (ArrayList<Giocatore>) getIntent().getSerializableExtra("giocatori");
+
+        if(giocatori != null)
+        {
+            CustomAdapter adapter = new CustomAdapter(getApplicationContext(), R.layout.listelement, giocatori);
+            listview.setAdapter(adapter);
+        }
 
 
         Button indietro = findViewById(R.id.indietros);
